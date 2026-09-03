@@ -1,0 +1,15 @@
+{
+    "name": "supul/idp-auth-client-testing",
+    "autoload": {
+        "psr-4": {
+            "Supul\\IdpAuthClientTesting\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "SupulCFG",
+            "email": "supuledirisinghe@gmail.com"
+        }
+    ],
+    "require": {}
+}
