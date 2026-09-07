@@ -29,7 +29,8 @@ SSO deployment.
 - A web server capable of serving PHP
 
 The application currently uses [`jumbojett/openid-connect-php`](https://github.com/jumbojett/OpenID-Connect-PHP),
-declared in `composer.json` with the `^1.0` version constraint.
+declared in `composer.json`, which is the source of truth for its version
+constraint.
 
 ## Installation
 
@@ -61,7 +62,7 @@ declared in `composer.json` with the `^1.0` version constraint.
        'client_id' => 'your-client-id',
        'client_secret' => 'your-client-secret',
        'redirect_uri' => 'https://app.example.com/oidc-callback.php',
-       'post_logout_redirect_uri' => 'app.example.com', // no scheme or path
+       'post_logout_redirect_uri' => 'app.example.com', // hostname only
        'session_name' => 'KCSESSID',
    ]
    ```
