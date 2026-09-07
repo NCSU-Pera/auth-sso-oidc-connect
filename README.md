@@ -81,7 +81,9 @@ constraint.
 
    `issuer` must point to the provider's valid OIDC discovery issuer. The
    `client_id` and `client_secret` are issued during SSO onboarding.
-   `session_name` is optional and defaults to `KCSESSID`. Unlike
+   `session_name` is optional and defaults to `KCSESSID`. This host-only
+   logout value is an implementation constraint of this sample's
+   `postLogoutUrl()` helper, not a general OIDC requirement. Unlike
    `redirect_uri`, the current logout implementation expects
    `post_logout_redirect_uri` to contain only the host portion
    (`app.example.com`), without `https://` or a path, and adds the request
