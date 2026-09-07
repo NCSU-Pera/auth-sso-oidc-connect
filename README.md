@@ -66,12 +66,10 @@ declared in `composer.json` with the `^1.0` version constraint.
    ]
    ```
 
-   `session_name` is optional and defaults to `KCSESSID`. The
-   `post_logout_redirect_uri` example is the host portion of the
-   `redirect_uri` above: it is host-only, so do not include `https://` or a
-   path. Unlike
+   `session_name` is optional and defaults to `KCSESSID`. Unlike
    `redirect_uri`, the current logout implementation expects
-   `post_logout_redirect_uri` to contain the host only and adds the request
+   `post_logout_redirect_uri` to contain only the host portion
+   (`app.example.com`), without `https://` or a path, and adds the request
    scheme. It should match an allowed post-logout redirect configured in the
    OIDC provider.
 
