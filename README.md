@@ -1,9 +1,13 @@
-# Auth SSO OIDC Connect
+# University of Peradeniya SSO OIDC Client
 
-A small PHP application demonstrating Single Sign-On (SSO) with an OpenID
-Connect (OIDC) provider such as Keycloak. It implements the authorization
-code flow with PKCE, stores the authenticated user's claims in a PHP session,
-refreshes access tokens, and supports provider logout.
+A sample PHP OIDC client for web applications that need to authenticate users
+with the University of Peradeniya Single Sign-On (SSO) service. It implements
+the authorization code flow with PKCE, stores the authenticated user's claims
+in a PHP session, refreshes access tokens, and supports provider logout.
+
+The example is provider-agnostic at the application level, but its logout
+endpoint follows the Keycloak-compatible OIDC endpoint used by the university
+SSO deployment.
 
 ## Features
 
