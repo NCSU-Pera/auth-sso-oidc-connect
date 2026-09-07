@@ -40,9 +40,9 @@ declared in `composer.json` with the `^1.0` version constraint.
    cd auth-sso-oidc-connect
    ```
 
-   The GitHub repository is hosted under the `NCSU-Pera` organization; this
-   sample is intended for web applications integrating with the University of
-   Peradeniya SSO.
+   The GitHub repository slug is `auth-sso-oidc-connect` and it is hosted under
+   the `NCSU-Pera` organization; this sample is intended for web applications
+   integrating with the University of Peradeniya SSO.
 
 2. Install PHP dependencies:
 
@@ -66,9 +66,10 @@ declared in `composer.json` with the `^1.0` version constraint.
    ]
    ```
 
-   `session_name` is optional and defaults to `KCSESSID`. The example
-   `app.example.com` is a host only: do not include `https://` or a path.
-   Unlike
+   `session_name` is optional and defaults to `KCSESSID`. The
+   `post_logout_redirect_uri` example is the host portion of the
+   `redirect_uri` above: it is host-only, so do not include `https://` or a
+   path. Unlike
    `redirect_uri`, the current logout implementation expects
    `post_logout_redirect_uri` to contain the host only and adds the request
    scheme. It should match an allowed post-logout redirect configured in the
