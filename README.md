@@ -51,10 +51,22 @@ constraint.
    composer install
    ```
 
-3. Create the local configuration class at `config/EnvClass.php`.
+3. Request onboarding details from NCSU before configuring the client. Each
+   application must be issued an API key/client credential and must request the
+   post-authentication claims it needs from the SSO (for example, `email`,
+   `name`, or other institution-specific claims). The SSO team must approve
+   the application's redirect and post-logout URLs.
+
+   If you are integrating your application with this sample, the maintainers
+   will provide the appropriate environment file after onboarding. Do not
+   commit that file or share its credentials publicly.
+
+4. Create the local configuration class at `config/EnvClass.php`.
    Configuration files matching `config/Env*` are intentionally ignored by
-   Git, so client secrets are not committed. `EnvClass::get('OIDC', [])` must
-   return an array containing:
+   Git, so client secrets are not committed. The required values are
+   `issuer`, `client_id`, `client_secret`, `redirect_uri`, and
+   `post_logout_redirect_uri`; `session_name` is optional.
+   `EnvClass::get('OIDC', [])` must return an array containing:
 
    ```php
    [
@@ -67,6 +79,8 @@ constraint.
    ]
    ```
 
+   `issuer` must point to the provider's valid OIDC discovery issuer. The
+   `client_id` and `client_secret` are issued during SSO onboarding.
    `session_name` is optional and defaults to `KCSESSID`. Unlike
    `redirect_uri`, the current logout implementation expects
    `post_logout_redirect_uri` to contain only the host portion
@@ -74,12 +88,12 @@ constraint.
    scheme. It should match an allowed post-logout redirect configured in the
    OIDC provider.
 
-4. Register the following URLs for the OIDC client:
+5. Register the following URLs for the OIDC client:
 
    - Redirect URI: `https://app.example.com/oidc-callback.php`
    - Post-logout redirect URI: the host configured above
 
-5. Configure the web server's document root as the project directory, or
+6. Configure the web server's document root as the project directory, or
    serve it locally with PHP:
 
    ```bash
