@@ -60,15 +60,16 @@ The application currently uses [`jumbojett/openid-connect-php`](https://github.c
        'client_id' => 'your-client-id',
        'client_secret' => 'your-client-secret',
        'redirect_uri' => 'https://app.example.com/oidc-callback.php',
-       'post_logout_redirect_uri' => 'app.example.com',
+       'post_logout_redirect_uri' => 'app.example.com', // host only
        'session_name' => 'KCSESSID',
    ]
    ```
 
-   `session_name` is optional and defaults to `KCSESSID`. The
-   `post_logout_redirect_uri` value is used as a host by the current logout
-   implementation and should match an allowed post-logout redirect configured
-   in the OIDC provider.
+   `session_name` is optional and defaults to `KCSESSID`. Unlike
+   `redirect_uri`, the current logout implementation expects
+   `post_logout_redirect_uri` to contain the host only and adds the request
+   scheme. It should match an allowed post-logout redirect configured in the
+   OIDC provider.
 
 4. Register the following URLs for the OIDC client:
 
