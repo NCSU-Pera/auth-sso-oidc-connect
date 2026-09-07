@@ -2,7 +2,10 @@
     "name": "supul/idp-auth-client-testing",
     "autoload": {
         "psr-4": {
-            "Supul\\IdpAuthClientTesting\\": "src/"
+            "IdPTestApp\\Core\\": "core/",
+            "IdPTestApp\\Utils\\": "utils/",
+            "IdPTestApp\\Config\\": "config/",
+            "IdPTestApp\\Enums\\": "enums/"
         }
     },
     "authors": [
@@ -11,5 +14,7 @@
             "email": "supuledirisinghe@gmail.com"
         }
     ],
-    "require": {}
+    "require": {
+         "jumbojett/openid-connect-php": "^1.0"
+    }
 }
