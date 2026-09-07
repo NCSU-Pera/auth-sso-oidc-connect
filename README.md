@@ -2,35 +2,26 @@
 
 A sample PHP OIDC client for web applications that need to authenticate users
 with the University of Peradeniya Single Sign-On (SSO) service. It implements
-the authorization code flow with PKCE, stores the authenticated user's claims
+the authorization code flow, stores the authenticated user's claims
 in a PHP session, refreshes access tokens, and supports provider logout.
-
-The example is provider-agnostic at the application level, but its logout
-endpoint follows the Keycloak-compatible OIDC endpoint used by the university
-SSO deployment.
 
 ## Features
 
 - OIDC authorization code flow
-- PKCE using the `S256` code challenge method
-- `openid`, `profile`, and `email` scopes
-- Secure session-cookie defaults (`HttpOnly`, `SameSite=Lax`, and HTTPS-only
-  cookies when served over HTTPS)
+- Different Authentication Scopes
+- Secure session-cookie defaults
 - Access-token refresh before expiry
 - CSRF-protected session keepalive endpoint
 - Helpers for reading claims, realm roles, and groups
 - OIDC provider logout with an optional ID-token hint
 
 ## Requirements
-
-- PHP 7.4 or newer
+- PHP 8.0 or newer
 - Composer
-- An OIDC provider and registered client
 - A web server capable of serving PHP
+- SSO Authentication Secret (requested from the NCSU)
 
-The application currently uses [`jumbojett/openid-connect-php`](https://github.com/jumbojett/OpenID-Connect-PHP),
-declared in `composer.json`, which is the source of truth for its version
-constraint.
+The application uses [`jumbojett/openid-connect-php`](https://github.com/jumbojett/OpenID-Connect-PHP) library via composer
 
 ## Installation
 
@@ -61,49 +52,11 @@ constraint.
    will provide the appropriate environment file after onboarding. Do not
    commit that file or share its credentials publicly.
 
-4. Create the local configuration class at `config/EnvClass.php`.
-   Configuration files matching `config/Env*` are intentionally ignored by
-   Git, so client secrets are not committed. The required values are
-   `issuer`, `client_id`, `client_secret`, `redirect_uri`, and
-   `post_logout_redirect_uri`; `session_name` is optional.
-   `EnvClass::get('OIDC', [])` must return an array containing:
+4. Add Environment Variables provided by the NCSU to the Project.
 
-   ```php
-   [
-       'issuer' => 'https://idp.example.com/realms/example',
-       'client_id' => 'your-client-id',
-       'client_secret' => 'your-client-secret',
-       'redirect_uri' => 'https://app.example.com/oidc-callback.php',
-       'post_logout_redirect_uri' => 'app.example.com', // hostname only; no scheme/path
-       'session_name' => 'KCSESSID',
-   ]
-   ```
-
-   `issuer` must point to the provider's valid OIDC discovery issuer. The
-   `client_id` and `client_secret` are issued during SSO onboarding.
-   `session_name` is optional and defaults to `KCSESSID`. This host-only
-   logout value is an implementation constraint of this sample's
-   `postLogoutUrl()` helper, not a general OIDC requirement. Unlike
-   `redirect_uri`, the current logout implementation expects
-   `post_logout_redirect_uri` to contain only the host portion
-   (`app.example.com`), without `https://` or a path, and adds the request
-   scheme. It should match an allowed post-logout redirect configured in the
-   OIDC provider.
-
-5. Register the following URLs for the OIDC client:
-
-   - Redirect URI: `https://app.example.com/oidc-callback.php`
-   - Post-logout redirect URI: the host configured above
-
-6. Configure the web server's document root as the project directory, or
+5. Configure the web server's document root as the project directory, or
    serve it locally with PHP:
 
-   ```bash
-   php -S localhost:8000
-   ```
-
-   For local HTTP development, use matching `http://localhost:8000/...` URLs
-   in the OIDC provider and in `config/EnvClass.php`.
 
 ## Usage
 
