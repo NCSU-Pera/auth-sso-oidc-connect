@@ -39,6 +39,10 @@ The application currently uses [`jumbojett/openid-connect-php`](https://github.c
    cd auth-sso-oidc-connect
    ```
 
+   The GitHub repository is hosted under the `NCSU-Pera` organization; this
+   sample is intended for web applications integrating with the University of
+   Peradeniya SSO.
+
 2. Install PHP dependencies:
 
    ```bash
