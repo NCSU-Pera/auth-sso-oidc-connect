@@ -28,7 +28,8 @@ SSO deployment.
 - An OIDC provider and registered client
 - A web server capable of serving PHP
 
-The application currently uses [`jumbojett/openid-connect-php`](https://github.com/jumbojett/OpenID-Connect-PHP).
+The application currently uses [`jumbojett/openid-connect-php`](https://github.com/jumbojett/OpenID-Connect-PHP),
+declared in `composer.json` with the `^1.0` version constraint.
 
 ## Installation
 
@@ -60,12 +61,14 @@ The application currently uses [`jumbojett/openid-connect-php`](https://github.c
        'client_id' => 'your-client-id',
        'client_secret' => 'your-client-secret',
        'redirect_uri' => 'https://app.example.com/oidc-callback.php',
-       'post_logout_redirect_uri' => 'app.example.com', // host only
+       'post_logout_redirect_uri' => 'app.example.com', // no scheme or path
        'session_name' => 'KCSESSID',
    ]
    ```
 
-   `session_name` is optional and defaults to `KCSESSID`. Unlike
+   `session_name` is optional and defaults to `KCSESSID`. The example
+   `app.example.com` is a host only: do not include `https://` or a path.
+   Unlike
    `redirect_uri`, the current logout implementation expects
    `post_logout_redirect_uri` to contain the host only and adds the request
    scheme. It should match an allowed post-logout redirect configured in the
