@@ -2,10 +2,10 @@
     "name": "supul/idp-auth-client-testing",
     "autoload": {
         "psr-4": {
-            "IdPTestApp\\Core\\": "core/",
-            "IdPTestApp\\Utils\\": "utils/",
-            "IdPTestApp\\Config\\": "config/",
-            "IdPTestApp\\Enums\\": "enums/"
+            "SpTestApp\\Core\\": "core/",
+            "SpTestApp\\Utils\\": "utils/",
+            "SpTestApp\\Config\\": "config/",
+            "SpTestApp\\Enums\\": "enums/"
         }
     },
     "authors": [

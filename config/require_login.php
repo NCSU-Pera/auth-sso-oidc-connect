@@ -1,7 +1,7 @@
 <?php
 require __DIR__ . '/../vendor/autoload.php';
 
-use IdPTestApp\Core\OIDC\OIDCHandler;
+use SpTestApp\Core\OIDC\OIDCHandler;
 
 
 const REFRESH_THRESHOLD_SECS = 60; // If <= 60s remain, try to refresh

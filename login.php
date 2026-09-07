@@ -2,7 +2,7 @@
 
 require __DIR__ . '/vendor/autoload.php';
 
-use IdPTestApp\Core\OIDC\OIDCHandler;
+use SpTestApp\Core\OIDC\OIDCHandler;
 
 
 

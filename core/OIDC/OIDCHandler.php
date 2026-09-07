@@ -1,10 +1,10 @@
 <?php
 
-namespace IdPTestApp\Core\OIDC;
+namespace SpTestApp\Core\OIDC;
 
 use Jumbojett\OpenIDConnectClient;
-use IdPTestApp\Config\EnvClass;
-use IdPTestApp\Config\OIDCConfig;
+use SpTestApp\Config\EnvClass;
+use SpTestApp\Config\OIDCConfig;
 
 class OIDCHandler {
   private static $oidcConfig;
