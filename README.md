@@ -74,7 +74,7 @@ constraint.
        'client_id' => 'your-client-id',
        'client_secret' => 'your-client-secret',
        'redirect_uri' => 'https://app.example.com/oidc-callback.php',
-       'post_logout_redirect_uri' => 'app.example.com', // hostname only
+       'post_logout_redirect_uri' => 'app.example.com', // hostname only; no scheme/path
        'session_name' => 'KCSESSID',
    ]
    ```
