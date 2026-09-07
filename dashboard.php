@@ -6,11 +6,7 @@ require_once __DIR__ . '/config/require_login.php';
 
 
 $email = $_SESSION['claims']['email'] ?? 'UNKNOWN';
-$employeeNumber = $_SESSION['claims']['employee_number'] ?? 'UNKNOWN';
 
-print_r($email);
-echo "<br>";
-print_r($employeeNumber);
 
 ?>
 
